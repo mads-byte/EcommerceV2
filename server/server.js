@@ -13,8 +13,7 @@ app.use(express.json()) // For parsing application/json
 
 
 
-//setting the port where server will run
-const PORT = process.env.PORT || 3000
+app.use(express.static(path.join(process.cwd(), "dist")));
 
 
 
@@ -61,10 +60,11 @@ app.get("/products/:type", async (req, res) => {
 });
 
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(process.cwd(), "dist", "index.html"));
+});
 
-
-//creating a server instance and listening for requests
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
-
+    console.log(`Server listening on port ${PORT}`);
+});
