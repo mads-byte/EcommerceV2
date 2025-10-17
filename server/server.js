@@ -60,7 +60,7 @@ app.get("/products/:type", async (req, res) => {
 });
 
 
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
     res.sendFile(path.join(process.cwd(), "dist", "index.html"));
 });
 
