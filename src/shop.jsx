@@ -2,9 +2,9 @@ import Products from "./components/Products";
 import './shop.css'
 function Shop() {
     return (
-        <div>
+        <div className="container">
             <Products />
-        </div>
+        </div >
 
     );
 }

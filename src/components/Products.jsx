@@ -1,5 +1,5 @@
-import React from "react";
-
+import React from "react"
+import './Products.css'
 function Products() {
     const [products, setProducts] = React.useState([]);
     const [type, setType] = React.useState("");
@@ -29,28 +29,45 @@ function Products() {
 
     return (
         <div>
-            <div>
-                <button onClick={() => { setOrder(""), setType("") }}>All</button>
-                <button onClick={() => { setOrder(""), setType("carryOn") }}>Carry Ons</button>
-                <button onClick={() => { setOrder(""), setType("checked") }}>Checked Bags</button>
-                <button onClick={() => { setOrder(""), setType("accessory") }}>Accessories</button>
-                <button onClick={() => { setOrder(""), setType("bag") }}>Small bags</button>
-                <button onClick={() => { setOrder(""), setType("duffle") }}>Duffles</button>
+            <div className="filter-buttons">
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("") }}>All</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("carryOn") }}>Carry Ons</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("checked") }}>Checked Bags</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("accessory") }}>Accessories</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("bag") }}>Small bags</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("duffle") }}>Duffles</button>
             </div>
 
-            <div>
-                <button onClick={() => setOrder("ascending")}>Lowest To Highest Price</button>
-                <button onClick={() => setOrder("descending")}>Highest To Lowest Price</button>
+            <div className="price-buttons">
+                <button className="priceBtn-style" onClick={() => setOrder("ascending")}>Lowest To Highest Price</button>
+                <button className="priceBtn-style" onClick={() => setOrder("descending")}>Highest To Lowest Price</button>
             </div>
 
-            {products.map((product) => (
-                <div key={product.id}>
-                    <h2>{product.product_name}</h2>
-                    <p>${product.price}</p>
-                    <img src={`/products/${product.image}`} alt={product.alt} />
-                </div>
-            ))}
-        </div>
+            <div className="productSection">
+                {products.map((product) => (
+                    <div
+                        key={product.id}
+                        className="productBox"
+                    >
+                        <div style={{
+                            backgroundSize: 'contain',
+                            backgroundImage: `url(/products/${product.hoverImage})`,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center'
+                        }}>
+                            <img alt={product.alt} src={`products/${product.image}`}></img>
+                        </div>
+                        <div className="productName">{product.product_name}</div>
+                        <div className="price">${product.price}
+                            <del className="pastPrice">${product.past_price}</del>
+                        </div>
+                        <div className="productDescription">{product.description}</div>
+                    </div>
+                ))}
+            </div>
+
+
+        </div >
     );
 }
 

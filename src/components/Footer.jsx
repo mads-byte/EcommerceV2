@@ -14,8 +14,8 @@ function Footer() {
     return (
         <footer>
             <div className="copyright">&copy; 2025 West Travel Inc. All rights reserved</div>
-            <div><NavLink aria-label="see the company instagram account" to="#"><FontAwesomeIcon icon="fa-brands fa-instagram" /></NavLink></div>
-            <div><NavLink aria-label="see the company twitter or X account " to="#"><FontAwesomeIcon icon="fa-brands fa-x-twitter" /></NavLink></div>
+            <div><NavLink aria-label="see the company instagram account" to="https://www.instagram.com/"><FontAwesomeIcon icon="fa-brands fa-instagram" /></NavLink></div>
+            <div><NavLink aria-label="see the company twitter or X account " to="https://x.com/?lang=en"><FontAwesomeIcon icon="fa-brands fa-x-twitter" /></NavLink></div>
         </footer>
     )
 }
