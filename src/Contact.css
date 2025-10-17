@@ -1,3 +1,13 @@
+.header {
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10vh;
+    font-size: 3vw;
+    color: rgb(74, 49, 20);
+}
+
 form {
     display: block;
     width: 50%;
@@ -7,6 +17,34 @@ form {
     font-family: "DM Serif Text", serif;
 }
 
+label {
+    font-size: 2vw;
+    display: block;
+    margin-top: 2vh;
+}
+
+#name-warning,
+#email-warning,
+#message-warning {
+    color: rgb(183, 25, 25);
+}
+
+input {
+    min-height: fit-content;
+    height: 5vh;
+    width: 100%;
+    display: block;
+    font-size: 2vw;
+    border: transparent;
+    border-bottom: 2px solid rgb(74, 49, 20);
+    font-family: "DM Serif Text", serif;
+}
+
+input:focus {
+    outline: none;
+    background-color: rgb(224, 233, 253);
+}
+
 textarea {
     resize: vertical;
     display: block;
@@ -14,4 +52,32 @@ textarea {
     font-size: 2vw;
     height: 30vh;
     font-family: "DM Serif Text", serif;
+}
+
+#submit {
+    font-size: 2vw;
+    color: white;
+    font-family: "DM Serif Text", serif;
+    width: 100%;
+    margin-top: 20px;
+    background-color: rgb(74, 49, 20);
+    border-style: none;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background-color: rgb(184, 148, 103);
+}
+
+@media screen and (max-width: 800px) {
+    form {
+        width: 80%;
+    }
+
+    label,
+    input,
+    textarea,
+    #submit {
+        font-size: 5vw;
+    }
 }

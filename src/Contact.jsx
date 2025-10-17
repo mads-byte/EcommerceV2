@@ -18,16 +18,16 @@ function Contact() {
         setEmailError("")
         setNameError("")
         if (!nameRegex.test(name)) {
-            setNameError("Please enter a valid name")
+            setNameError("(Please enter a valid name)")
             e.preventDefault();
 
         } else if (!emailRegex.test(email)) {
 
-            setEmailError("Please enter a valid email")
+            setEmailError("(Please enter a valid email)")
             e.preventDefault();
 
         } else if (!message) {
-            setMessageError("Please enter a message")
+            setMessageError("(Please enter a message)")
             e.preventDefault();
         } else {
             setEmailError("")
@@ -37,37 +37,42 @@ function Contact() {
     }
 
     return (
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <>
+            <div className="header">
+                <h1>Contact Us</h1>
+            </div>
+            <form className="contact-form" onSubmit={handleSubmit}>
 
-            <label htmlFor="user-name">Name <span id="name-warning" >{nameError}</span></label>
-            <input
-                id="user-name"
-                name="user-name"
-                type="text"
-                maxLength={30}
-                autoComplete="off"
-                value={name}
-                onChange={(e) => { setName(e.target.value); console.log('name:', e.target.value); }}
-            />
-            <label htmlFor="user-email">Email <span id="email-warning" >{emailError}</span></label>
-            <input
-                id="user-email"
-                name="user-email"
-                type="text"
-                autoComplete="off"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); console.log('email:', e.target.value); }}
-            />
-            <label htmlFor="user-message">Message <span id="message-warning" >{messageError}</span></label>
-            <textarea
-                id="user-message"
-                maxLength={200}
-                autoComplete="off"
-                value={message}
-                onChange={(e) => { setMessage(e.target.value); console.log('message:', e.target.value); }}
-            />
-            <button id="submit" type="submit">Send</button>
-        </form>
+                <label htmlFor="user-name">Name <span id="name-warning" >{nameError}</span></label>
+                <input
+                    id="user-name"
+                    name="user-name"
+                    type="text"
+                    maxLength={30}
+                    autoComplete="off"
+                    value={name}
+                    onChange={(e) => { setName(e.target.value); console.log('name:', e.target.value); }}
+                />
+                <label htmlFor="user-email">Email <span id="email-warning" >{emailError}</span></label>
+                <input
+                    id="user-email"
+                    name="user-email"
+                    type="text"
+                    autoComplete="off"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); console.log('email:', e.target.value); }}
+                />
+                <label htmlFor="user-message">Message <span id="message-warning" >{messageError}</span></label>
+                <textarea
+                    id="user-message"
+                    maxLength={200}
+                    autoComplete="off"
+                    value={message}
+                    onChange={(e) => { setMessage(e.target.value); console.log('message:', e.target.value); }}
+                />
+                <button id="submit" type="submit">Send</button>
+            </form>
+        </>
     )
 }
 
