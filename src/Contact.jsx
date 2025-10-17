@@ -1,5 +1,5 @@
 import React from "react";
-
+import './Contact.css'
 function Contact() {
 
     const [name, setName] = React.useState("");
@@ -59,10 +59,9 @@ function Contact() {
                 onChange={(e) => { setEmail(e.target.value); console.log('email:', e.target.value); }}
             />
             <label htmlFor="user-message">Message <span id="message-warning" >{messageError}</span></label>
-            <input
+            <textarea
                 id="user-message"
                 maxLength={200}
-                type="text"
                 autoComplete="off"
                 value={message}
                 onChange={(e) => { setMessage(e.target.value); console.log('message:', e.target.value); }}

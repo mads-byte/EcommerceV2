@@ -49,7 +49,7 @@ function Products() {
                         key={product.id}
                         className="productBox"
                     >
-                        <div style={{
+                        <div className="prod-img" style={{
                             backgroundSize: 'contain',
                             backgroundImage: `url(/products/${product.hoverImage})`,
                             backgroundRepeat: 'no-repeat',

@@ -55,7 +55,8 @@
     justify-content: space-evenly;
 }
 
-div img:hover {
+
+.prod-img img:hover {
     cursor: pointer;
     opacity: 0%;
     transition: 0.5s;
@@ -67,11 +68,12 @@ div img:hover {
 }
 
 .productBox img {
-    width: 100%;
+    width: 105%;
 }
 
 .price,
 .productName {
+    text-align: center;
     color: rgb(74, 49, 20);
     font-family: "DM Serif Text", serif;
     font-size: 1.8rem;
@@ -81,9 +83,11 @@ div img:hover {
     color: rgb(176, 72, 60);
     font-family: "DM Serif Text", serif;
     font-size: 1.5rem;
+    padding-left: 10px;
 }
 
 .productDescription {
+    text-align: center;
     font-size: 1rem;
 }
 
