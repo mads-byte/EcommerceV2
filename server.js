@@ -13,8 +13,6 @@ app.use(express.json()) // For parsing application/json
 
 
 
-app.use(express.static(path.join(process.cwd(), "dist")));
-
 
 
 
@@ -60,8 +58,10 @@ app.get("/products/:type", async (req, res) => {
 });
 
 
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(process.cwd(), "dist", "index.html"));
+app.use(express.static(path.join(process.cwd(), "client/dist")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(process.cwd(), "client/dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
