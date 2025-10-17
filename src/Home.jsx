@@ -1,8 +1,10 @@
+import Slider from "./components/Slider";
+
 function Home() {
     return (
         <section>
-            <h1>Welcome</h1>
-            <p>This is the home page.</p>
+            <h1 className="featured-header">Featured This Season</h1>
+            <Slider />
         </section>
     );
 }
