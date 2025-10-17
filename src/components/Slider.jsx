@@ -33,18 +33,20 @@ function Slider() {
                     />
                 ))}
             </div>
-            <button
-                className="prev"
-                onClick={() => setIndex((prev) => (prev - 1 + images.length) % images.length)}
-                aria-label="Previous"
-            ><FontAwesomeIcon icon="arrow-left" />
-            </button>
-            <button
-                className="next"
-                onClick={() => setIndex((prev) => (prev + 1) % images.length)}
-                aria-label="Next"
-            ><FontAwesomeIcon icon="arrow-right" />
-            </button>
+            <div className="buttons">
+                <button
+                    className="prev"
+                    onClick={() => setIndex((prev) => (prev - 1 + images.length) % images.length)}
+                    aria-label="Previous"
+                ><FontAwesomeIcon icon="arrow-left" />
+                </button>
+                <button
+                    className="next"
+                    onClick={() => setIndex((prev) => (prev + 1) % images.length)}
+                    aria-label="Next"
+                ><FontAwesomeIcon icon="arrow-right" />
+                </button>
+            </div>
         </div>
     )
 };

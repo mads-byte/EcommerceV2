@@ -1,5 +1,43 @@
+.slider {
+    margin: auto;
+    width: 50%;
+
+}
+
 .slides img {
     width: 100%;
     height: auto;
     display: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    position: relative;
+    top: -15rem;
+}
+
+.slides button {
+    font-size: 40px;
+
+}
+
+.prev,
+.next {
+    color: rgb(74, 49, 20);
+    border-color: transparent;
+    font-size: 4vw;
+}
+
+.prev:hover,
+.next:hover {
+    cursor: pointer;
+    background-color: bisque;
+}
+
+@media screen and (max-width:768px) {
+    .buttons {
+        top: -5rem;
+    }
 }

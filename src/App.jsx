@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./Home.jsx";
 import Shop from "./shop.jsx";
 import Contact from "./Contact.jsx";
-
+import Footer from "./components/Footer.jsx";
 function App() {
   return (
     <Router>
@@ -15,8 +15,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
-  );
+  )
 }
 
 export default App;

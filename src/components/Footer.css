@@ -1,0 +1,29 @@
+footer {
+    height: 5vh;
+    background-color: rgb(74, 49, 20);
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content: center;
+}
+
+footer a,
+footer a:active,
+footer a:visited {
+    color: white;
+}
+
+footer a:hover {
+    color: rgb(184, 148, 103);
+}
+
+.copyright {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.fa-brands {
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

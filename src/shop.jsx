@@ -1,9 +1,8 @@
 import Products from "./components/Products";
+import './shop.css'
 function Shop() {
     return (
         <div>
-            <h1>Shop</h1>
-            <p>Products will appear here.</p>
             <Products />
         </div>
 
