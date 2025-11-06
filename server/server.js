@@ -18,7 +18,7 @@ app.use(express.json()) // For parsing application/json
 
 app.get("/products", async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM products");
+        const [rows] = await pool.query("SELECT * FROM products_table");
         res.json(rows);
     } catch (err) {
         console.error(err);
@@ -28,7 +28,7 @@ app.get("/products", async (req, res) => {
 
 app.get("/products/ascending", async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM products ORDER BY price ASC");
+        const [rows] = await pool.query("SELECT * FROM products_table ORDER BY price ASC");
         res.json(rows);
     } catch (err) {
         console.error(err);
@@ -38,7 +38,7 @@ app.get("/products/ascending", async (req, res) => {
 
 app.get("/products/descending", async (req, res) => {
     try {
-        const [rows] = await pool.query("SELECT * FROM products ORDER BY price DESC");
+        const [rows] = await pool.query("SELECT * FROM products_table ORDER BY price DESC");
         res.json(rows);
     } catch (err) {
         console.error(err);
@@ -49,19 +49,12 @@ app.get("/products/descending", async (req, res) => {
 app.get("/products/:type", async (req, res) => {
     try {
         const type = req.params.type;
-        const [rows] = await pool.query(`SELECT * FROM products WHERE prod_type = ?`, [type]);
+        const [rows] = await pool.query(`SELECT * FROM products_table WHERE prod_type = ?`, [type]);
         res.json(rows);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Database error" });
     }
-});
-
-
-app.use(express.static(path.join(process.cwd(), "client/dist")));
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(process.cwd(), "client/dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
