@@ -31,11 +31,11 @@ function Products() {
         <div>
             <div className="filter-buttons">
                 <button className="buttons-style" onClick={() => { setOrder(""), setType("") }}>All</button>
-                <button className="buttons-style" onClick={() => { setOrder(""), setType("carryOn") }}>Carry Ons</button>
-                <button className="buttons-style" onClick={() => { setOrder(""), setType("checked") }}>Checked Bags</button>
-                <button className="buttons-style" onClick={() => { setOrder(""), setType("accessory") }}>Accessories</button>
-                <button className="buttons-style" onClick={() => { setOrder(""), setType("bag") }}>Small bags</button>
-                <button className="buttons-style" onClick={() => { setOrder(""), setType("duffle") }}>Duffles</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("Carry-On") }}>Carry Ons</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("Checked") }}>Checked Bags</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("Accessory") }}>Accessories</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("Bag") }}>Small bags</button>
+                <button className="buttons-style" onClick={() => { setOrder(""), setType("Duffle") }}>Duffles</button>
             </div>
 
             <div className="price-buttons">

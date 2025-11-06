@@ -1,6 +1,6 @@
 .slider {
     margin: auto;
-    width: 30%;
+    width: 400px;
 
 }
 
@@ -15,14 +15,14 @@
     justify-content: space-between;
     z-index: 3;
     position: relative;
-    top: -15rem;
+    top: -180px;
 }
 
 .prev,
 .next {
     color: rgb(74, 49, 20);
     border-color: transparent;
-    font-size: 3vw;
+    font-size: 24px;
 }
 
 .prev:hover,
@@ -34,10 +34,10 @@
 @media screen and (max-width:820px) {
 
     .slider {
-        width: 50%;
+        width: 300px;
     }
 
     .buttons {
-        top: -5rem;
+        top: -140px;
     }
 }
