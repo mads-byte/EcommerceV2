@@ -6,6 +6,7 @@
     margin-top: 10vh;
     font-size: 3vw;
     color: rgb(74, 49, 20);
+    font-family: "DM Serif Text", serif;
 }
 
 form {
@@ -51,6 +52,7 @@ textarea {
     width: 100%;
     font-size: 2vw;
     height: 30vh;
+    padding: 15px;
     font-family: "DM Serif Text", serif;
 }
 

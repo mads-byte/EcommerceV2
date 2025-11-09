@@ -57,7 +57,30 @@ app.get("/products/:type", async (req, res) => {
     }
 });
 
+
+app.get("/products/:type/descending", async (req, res) => {
+    try {
+        const type = req.params.type;
+        const [rows] = await pool.query(`SELECT * FROM products_table WHERE prod_type = ? ORDER BY price DESC`, [type]);
+        res.json(rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Database error" });
+    }
+});
+
+app.get("/products/:type/ascending", async (req, res) => {
+    try {
+        const type = req.params.type;
+        const [rows] = await pool.query(`SELECT * FROM products_table WHERE prod_type = ? ORDER BY price ASC`, [type]);
+        res.json(rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Database error" });
+    }
+});
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server listening on port ${PORT}`);
 });

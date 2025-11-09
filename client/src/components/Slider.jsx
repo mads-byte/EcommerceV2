@@ -1,8 +1,10 @@
 import React from 'react';
+import { useState } from 'react'
 import "./Slider.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css'
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -14,40 +16,40 @@ import img2 from "/products/suitcase2.avif"
 import img3 from "/products/suitcase3.avif"
 
 
-
 function Slider() {
-    const [index, setIndex] = React.useState(0);
+    const [index, setIndex] = useState(0);
     const images = [img1, img2, img3];
-    // no direct DOM manipulation; render images and control visibility via state
-
-
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
+    };
     return (
-        <div className="slider">
-            <div className="slides">
-                {images.map((src, i) => (
-                    <img
-                        key={i}
-                        src={src}
-                        alt={`slide ${i + 1}`}
-                        style={{ display: i === index ? "block" : "none" }}
-                    />
-                ))}
-            </div>
-            <div className="buttons">
-                <button
-                    className="prev"
-                    onClick={() => setIndex((prev) => (prev - 1 + images.length) % images.length)}
-                    aria-label="Previous"
-                ><FontAwesomeIcon icon="arrow-left" />
-                </button>
-                <button
-                    className="next"
-                    onClick={() => setIndex((prev) => (prev + 1) % images.length)}
-                    aria-label="Next"
-                ><FontAwesomeIcon icon="arrow-right" />
-                </button>
-            </div>
-        </div>
+        <>
+            <Carousel activeIndex={index} onSelect={handleSelect}>
+                <Carousel.Item>
+                    <img src={img1}></img>
+                    <Carousel.Caption>
+                        <h3>Voyage Carry-On</h3>
+                        <p>Navy blue hard shell carry-on</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img src={img2}></img>
+                    <Carousel.Caption>
+                        <h3>Autumn Pro Carry-On</h3>
+                        <p>Soft herringbone carry-on</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img src={img3}></img>
+                    <Carousel.Caption>
+                        <h3>Pack Pro Luxe</h3>
+                        <p>
+                            Dark brown hard shell carry-on
+                        </p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
+        </>
     )
 };
 

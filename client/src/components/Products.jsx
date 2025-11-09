@@ -9,9 +9,9 @@ function Products() {
             let url = "http://localhost:3000/products";
             if (type) url += `/${type}`;
             if (order && order === "ascending") {
-                url = "http://localhost:3000/products/ascending";
+                url += "/ascending";
             } else if (order && order === "descending") {
-                url = "http://localhost:3000/products/descending";
+                url += "/descending";
             }
             try {
                 const response = await fetch(url);
@@ -28,7 +28,7 @@ function Products() {
     }, [type, order]);
 
     return (
-        <div>
+        <div className="body">
             <div className="filter-buttons">
                 <button className="buttons-style" onClick={() => { setOrder(""), setType("") }}>All</button>
                 <button className="buttons-style" onClick={() => { setOrder(""), setType("Carry-On") }}>Carry Ons</button>

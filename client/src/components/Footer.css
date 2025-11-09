@@ -1,23 +1,28 @@
-footer {
-    height: 5vh;
+.disclaimer {
+    color: bisque;
+}
+
+.footer-end {
     background-color: rgb(74, 49, 20);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     color: white;
     justify-content: center;
     position: relative;
-    bottom: 0;
-    margin-top: 10vh;
+    bottom: -2px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     width: 100%;
 }
 
-footer a,
-footer a:active,
-footer a:visited {
+.footer-end a,
+.footer-end a:active,
+.footer-end a:visited {
     color: white;
 }
 
-footer a:hover {
+.footer-end a:hover {
     color: rgb(184, 148, 103);
 }
 

@@ -70,20 +70,21 @@ ul a.active {
     border-color: transparent;
 }
 
-@media (min-width: 821px) {
+@media (min-width: 893px) {
     ul {
         max-height: none !important;
     }
 }
 
 
-@media screen and (max-width:820px) {
+@media screen and (max-width:892px) {
 
     .nav-logo {
         height: 100px;
     }
 
     nav ul {
+        z-index: 8;
         max-height: 0px;
         font-size: 20px;
         display: block;
