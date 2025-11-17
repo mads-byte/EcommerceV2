@@ -12,7 +12,7 @@ function Products() {
     );
     useEffect(() => {
         async function fetchProducts() {
-            let url = "http://localhost:3000/products";
+            let url = "https://ecommercev2-1-backend.onrender.com/products";
             if (type) url += `/${type}`;
             if (order && order === "ascending") {
                 url += "/ascending";
