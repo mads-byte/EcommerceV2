@@ -1,12 +1,18 @@
 import React from "react"
 import './Products.css'
+import { useState, useEffect } from 'react'
 function Products() {
-    const [products, setProducts] = React.useState([]);
-    const [type, setType] = React.useState("");
-    const [order, setOrder] = React.useState("");
-    React.useEffect(() => {
+    const [products, setProducts] = useState([]);
+    const [type, setType] = useState("");
+    const [order, setOrder] = useState("");
+    const [cart, setCart] = useState(
+        sessionStorage.getItem("cart")
+            ? JSON.parse(sessionStorage.getItem("cart"))
+            : []
+    );
+    useEffect(() => {
         async function fetchProducts() {
-            let url = "https://ecommercev2-1-backend.onrender.com/products";
+            let url = "http://localhost:3000/products";
             if (type) url += `/${type}`;
             if (order && order === "ascending") {
                 url += "/ascending";
