@@ -1,19 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Cart.css'
+import { useState } from 'react';
 
 function Cart() {
+    const [cart, setCart] = useState(
+        sessionStorage.getItem("cart")
+            ? JSON.parse(sessionStorage.getItem("cart"))
+            : []
+    );
+
+    useEffect(() => {
+        setCart(
+            sessionStorage.getItem("cart")
+                ? JSON.parse(sessionStorage.getItem("cart"))
+                : []
+        );
+    }, []);
     return (
         sessionStorage.getItem("cart") ? (
             <div className="cart-body">
                 <h2>Your Shopping Cart</h2>
                 <div className="cart-items">
-                    {JSON.parse(sessionStorage.getItem("cart")).map((item, index) => (
+                    {cart.map((item, index) => (
                         <div key={index} className="cart-item">
                             <img src={`products/${item.image}`} alt={item.product_name} className="cart-item-image" />
                             <div className="cart-item-details">
                                 <h3>{item.product_name}</h3>
                                 <p className="item-price">Price: ${item.price * item.quantity}</p>
-                                <p className="item-quantity">Quantity: {item.quantity}</p>
+                                <p className="item-quantity">
+                                    <button
+                                        onClick={() => {
+                                            const updatedCart = cart.map((cartItem, i) =>
+                                                i === index
+                                                    ? { ...cartItem, quantity: Math.max(cartItem.quantity - 1, 1) }
+                                                    : cartItem
+                                            );
+                                            setCart(updatedCart);
+                                            sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+                                        }}
+                                    >
+                                        -
+                                    </button>
+                                    Quantity: {item.quantity}
+                                    <button
+                                        onClick={() => {
+                                            const updatedCart = cart.map((cartItem, i) =>
+                                                i === index
+                                                    ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                                                    : cartItem
+                                            );
+                                            setCart(updatedCart);
+                                            sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+                                        }}
+                                    >
+
+                                        +
+                                    </button>
+                                </p>
                             </div>
                         </div>
                     ))}
