@@ -75,6 +75,17 @@
     width: 105%;
 }
 
+.btn-outline-dark {
+    width: 150px;
+    transition: 0.5s;
+}
+
+.btn-outline-dark:active {
+    background-color: #585858 !important;
+    color: #fff !important;
+    border-color: #000 !important;
+}
+
 .price,
 .productName {
     text-align: center;

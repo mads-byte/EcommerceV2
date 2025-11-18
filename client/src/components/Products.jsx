@@ -86,7 +86,14 @@ function Products() {
                                 updateCart(newCart);
                             }
                         }}>Add to Cart</Button> */}
-                        <Button variant="outline-dark" onClick={() => {
+                        <Button variant="outline-dark" onClick={(e) => {
+                            e.target.textContent = ` Added`;
+                            setTimeout(() => {
+                                e.target.textContent = ` ${cart[cart.findIndex(item => item.id === product.id)].quantity} +`;
+                            }, 500);
+                            setTimeout(() => {
+                                e.target.textContent = ` Add to Cart`;
+                            }, 1000);
                             if (cart.length === 0) {
                                 const newCart = [{ ...product, quantity: 1 }];
                                 updateCart(newCart);
