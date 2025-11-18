@@ -1,6 +1,8 @@
 import React from "react"
 import './Products.css'
 import { useState, useEffect } from 'react'
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'
 function Products() {
     const [products, setProducts] = useState([]);
     const [type, setType] = useState("");
@@ -32,6 +34,14 @@ function Products() {
 
         fetchProducts();
     }, [type, order]);
+
+    // function updateCart(newCart) {
+    //     const sanitized = newCart.filter(item => typeof item === "object" && item !== null); // filter out non-object entries
+    //     setCart(sanitized);
+    //     sessionStorage.setItem("cart", JSON.stringify(sanitized));
+    //     console.log("Cart:", cart);
+    // }
+
 
     return (
         <div className="body">
@@ -68,6 +78,30 @@ function Products() {
                             <del className="pastPrice">${product.past_price}</del>
                         </div>
                         <div className="productDescription">{product.description}</div>
+                        <Button variant="outline-dark" onClick={(e) => {
+                            e.target.textContent = `Added`;
+                            setTimeout(() => {
+                                e.target.textContent = ` Add to Cart`;
+                            }, 500);
+                            setCart(prevCart => {
+                                const exists = prevCart.find(item => item.id === product.id);
+
+                                let updated;
+                                if (exists) {
+                                    updated = prevCart.map(item =>
+                                        item.id === product.id
+                                            ? { ...item, quantity: item.quantity + 1 }
+                                            : item
+                                    );
+                                } else {
+                                    updated = [...prevCart, { ...product, quantity: 1 }];
+                                }
+
+                                sessionStorage.setItem("cart", JSON.stringify(updated));
+                                console.log("Cart:", sessionStorage.getItem("cart"));
+                                return updated;
+                            });
+                        }}>Add to Cart</Button>
                     </div>
                 ))}
             </div>

@@ -70,14 +70,18 @@ ul a.active {
     border-color: transparent;
 }
 
-@media (min-width: 893px) {
+.cart {
+    font-size: 23px;
+}
+
+@media (min-width: 900px) {
     ul {
         max-height: none !important;
     }
 }
 
 
-@media screen and (max-width:892px) {
+@media screen and (max-width:900px) {
 
     .nav-logo {
         height: 100px;

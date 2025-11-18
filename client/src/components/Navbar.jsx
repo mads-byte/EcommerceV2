@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 
 
@@ -36,7 +36,11 @@ function Navbar() {
                     <NavLink to="/" aria-label="return home" className={({ isActive }) => (isActive ? "active" : "")}>Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/shop" aria-label="shop for luxury luggage" className={({ isActive }) => (isActive ? "active" : "")}>Shop Now</NavLink>
+                    <NavLink to="/shop" aria-label="shop for luxury luggage" className={({ isActive }) => (isActive ? "active" : "")}>Shop</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/cart" aria-label="go to the shopping cart" className={({ isActive }) => (isActive ? "active" : "")}>
+                        <FontAwesomeIcon className="cart" icon={faCartShopping} /></NavLink>
                 </li>
                 <li>
                     <NavLink to="/contact" aria-label="go to the contact us page" className={({ isActive }) => (isActive ? "active" : "")}>Contact Us</NavLink>
