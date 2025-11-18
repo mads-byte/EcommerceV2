@@ -1,6 +1,8 @@
 import React from "react"
 import './Products.css'
 import { useState, useEffect } from 'react'
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'
 function Products() {
     const [products, setProducts] = useState([]);
     const [type, setType] = useState("");
@@ -63,6 +65,18 @@ function Products() {
                         }}>
                             <img alt={product.alt} src={`products/${product.image}`}></img>
                         </div>
+                        {/* <button className="outline-dark" onClick={() => {
+                            const newCart = [...cart, product];
+                            setCart(newCart);
+                            sessionStorage.setItem("cart", JSON.stringify(newCart));
+                            console.log("Cart:", newCart);
+                        }}>Add to Cart</button> */}
+                        <Button variant="outline-dark" onClick={() => {
+                            const newCart = [...cart, product];
+                            setCart(newCart);
+                            sessionStorage.setItem("cart", JSON.stringify(newCart));
+                            console.log("Cart:", newCart);
+                        }}>Add to Cart</Button>
                         <div className="productName">{product.product_name}</div>
                         <div className="price">${product.price}
                             <del className="pastPrice">${product.past_price}</del>
