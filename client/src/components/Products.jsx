@@ -35,6 +35,13 @@ function Products() {
         fetchProducts();
     }, [type, order]);
 
+    function updateCart(newCart) {
+        setCart(newCart);
+        sessionStorage.setItem("cart", JSON.stringify(newCart));
+        console.log("Cart:", newCart);
+    }
+
+
     return (
         <div className="body">
             <div className="filter-buttons">
@@ -65,17 +72,30 @@ function Products() {
                         }}>
                             <img alt={product.alt} src={`products/${product.image}`}></img>
                         </div>
-                        {/* <button className="outline-dark" onClick={() => {
-                            const newCart = [...cart, product];
-                            setCart(newCart);
-                            sessionStorage.setItem("cart", JSON.stringify(newCart));
-                            console.log("Cart:", newCart);
-                        }}>Add to Cart</button> */}
+
+                        {/* <Button variant="outline-dark" onClick={() => {
+                            if (cart.length === 0) {
+                                const newCart = [{ ...product, quantity: 1 }];
+                                updateCart(newCart);
+                                return;
+                            } else {
+                                const newCart = cart.map(item => item.id).includes(product.id)
+                                    ? [...cart, cart[cart.findIndex(item => item.id === product.id)].quantity += 1]
+                                    : [...cart, { ...product, quantity: 1 }];
+                                updateCart(newCart);
+                            }
+                        }}>Add to Cart</Button> */}
                         <Button variant="outline-dark" onClick={() => {
-                            const newCart = [...cart, product];
-                            setCart(newCart);
-                            sessionStorage.setItem("cart", JSON.stringify(newCart));
-                            console.log("Cart:", newCart);
+                            if (cart.length === 0) {
+                                const newCart = [{ ...product, quantity: 1 }];
+                                updateCart(newCart);
+                                return;
+                            } else {
+                                const newCart = cart.map(item => item.id).includes(product.id)
+                                    ? [...cart, cart[cart.findIndex(item => item.id === product.id)].quantity += 1]
+                                    : [...cart, { ...product, quantity: 1 }];
+                                updateCart(newCart);
+                            }
                         }}>Add to Cart</Button>
                         <div className="productName">{product.product_name}</div>
                         <div className="price">${product.price}
