@@ -36,9 +36,10 @@ function Products() {
     }, [type, order]);
 
     function updateCart(newCart) {
-        setCart(newCart);
-        sessionStorage.setItem("cart", JSON.stringify(newCart));
-        console.log("Cart:", newCart);
+        const sanitized = newCart.filter(item => typeof item === "object" && item !== null); // filter out non-object entries
+        setCart(sanitized);
+        sessionStorage.setItem("cart", JSON.stringify(sanitized));
+        console.log("Cart:", cart);
     }
 
 
