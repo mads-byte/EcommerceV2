@@ -1,0 +1,38 @@
+.cart-body {
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: baseline;
+
+}
+
+.cart-item-image {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.cart-item-details {
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 10px;
+}
+
+.item-price {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.item-quantity {
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .cart-body {
+        min-height: 85vh;
+    }
+}

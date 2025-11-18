@@ -98,7 +98,7 @@ function Products() {
                                 }
 
                                 sessionStorage.setItem("cart", JSON.stringify(updated));
-                                console.log("Cart:", updated);
+                                console.log("Cart:", sessionStorage.getItem("cart"));
                                 return updated;
                             });
                         }}>Add to Cart</Button>
