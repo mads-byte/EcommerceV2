@@ -35,12 +35,12 @@ function Products() {
         fetchProducts();
     }, [type, order]);
 
-    function updateCart(newCart) {
-        const sanitized = newCart.filter(item => typeof item === "object" && item !== null); // filter out non-object entries
-        setCart(sanitized);
-        sessionStorage.setItem("cart", JSON.stringify(sanitized));
-        console.log("Cart:", cart);
-    }
+    // function updateCart(newCart) {
+    //     const sanitized = newCart.filter(item => typeof item === "object" && item !== null); // filter out non-object entries
+    //     setCart(sanitized);
+    //     sessionStorage.setItem("cart", JSON.stringify(sanitized));
+    //     console.log("Cart:", cart);
+    // }
 
 
     return (
@@ -73,43 +73,35 @@ function Products() {
                         }}>
                             <img alt={product.alt} src={`products/${product.image}`}></img>
                         </div>
-
-                        {/* <Button variant="outline-dark" onClick={() => {
-                            if (cart.length === 0) {
-                                const newCart = [{ ...product, quantity: 1 }];
-                                updateCart(newCart);
-                                return;
-                            } else {
-                                const newCart = cart.map(item => item.id).includes(product.id)
-                                    ? [...cart, cart[cart.findIndex(item => item.id === product.id)].quantity += 1]
-                                    : [...cart, { ...product, quantity: 1 }];
-                                updateCart(newCart);
-                            }
-                        }}>Add to Cart</Button> */}
-                        <Button variant="outline-dark" onClick={(e) => {
-                            e.target.textContent = ` Added`;
-                            setTimeout(() => {
-                                e.target.textContent = ` ${cart[cart.findIndex(item => item.id === product.id)].quantity} +`;
-                            }, 500);
-                            setTimeout(() => {
-                                e.target.textContent = ` Add to Cart`;
-                            }, 1000);
-                            if (cart.length === 0) {
-                                const newCart = [{ ...product, quantity: 1 }];
-                                updateCart(newCart);
-                                return;
-                            } else {
-                                const newCart = cart.map(item => item.id).includes(product.id)
-                                    ? [...cart, cart[cart.findIndex(item => item.id === product.id)].quantity += 1]
-                                    : [...cart, { ...product, quantity: 1 }];
-                                updateCart(newCart);
-                            }
-                        }}>Add to Cart</Button>
                         <div className="productName">{product.product_name}</div>
                         <div className="price">${product.price}
                             <del className="pastPrice">${product.past_price}</del>
                         </div>
                         <div className="productDescription">{product.description}</div>
+                        <Button variant="outline-dark" onClick={(e) => {
+                            e.target.textContent = `Added`;
+                            setTimeout(() => {
+                                e.target.textContent = ` Add to Cart`;
+                            }, 500);
+                            setCart(prevCart => {
+                                const exists = prevCart.find(item => item.id === product.id);
+
+                                let updated;
+                                if (exists) {
+                                    updated = prevCart.map(item =>
+                                        item.id === product.id
+                                            ? { ...item, quantity: item.quantity + 1 }
+                                            : item
+                                    );
+                                } else {
+                                    updated = [...prevCart, { ...product, quantity: 1 }];
+                                }
+
+                                sessionStorage.setItem("cart", JSON.stringify(updated));
+                                console.log("Cart:", updated);
+                                return updated;
+                            });
+                        }}>Add to Cart</Button>
                     </div>
                 ))}
             </div>
