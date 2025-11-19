@@ -23,10 +23,8 @@ function Products() {
             }
             try {
                 const response = await fetch(url);
-                console.log(response)
                 const data = await response.json();
                 setProducts(data);
-                console.log(data);
             } catch (err) {
                 console.error("Error fetching products:", err);
             }
@@ -82,7 +80,7 @@ function Products() {
                                 if (exists) {
                                     updated = prevCart.map(item =>
                                         item.id === product.id
-                                            ? { ...item, quantity: item.quantity + 1 }
+                                            ? { ...item, quantity: Math.min(item.quantity + 1, 20) }
                                             : item
                                     );
                                 } else {
@@ -90,7 +88,6 @@ function Products() {
                                 }
 
                                 sessionStorage.setItem("cart", JSON.stringify(updated));
-                                console.log("Cart:", sessionStorage.getItem("cart"));
                                 return updated;
                             });
                         }}>Add to Cart</Button>
