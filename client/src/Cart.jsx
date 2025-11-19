@@ -57,7 +57,7 @@ function Cart() {
                                             onClick={() => {
                                                 const updatedCart = cart.map((cartItem, i) =>
                                                     i === index
-                                                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                                                        ? { ...cartItem, quantity: Math.min(cartItem.quantity + 1, 20) }
                                                         : cartItem
                                                 );
                                                 setCart(updatedCart);

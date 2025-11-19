@@ -35,14 +35,6 @@ function Products() {
         fetchProducts();
     }, [type, order]);
 
-    // function updateCart(newCart) {
-    //     const sanitized = newCart.filter(item => typeof item === "object" && item !== null); // filter out non-object entries
-    //     setCart(sanitized);
-    //     sessionStorage.setItem("cart", JSON.stringify(sanitized));
-    //     console.log("Cart:", cart);
-    // }
-
-
     return (
         <div className="body">
             <div className="filter-buttons">
