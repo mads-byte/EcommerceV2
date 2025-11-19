@@ -1,18 +1,19 @@
 .cart-body {
     min-height: 80vh;
-    padding: 20px;
+    padding: 50px;
 }
 
 .cart-item {
     display: flex;
     align-items: baseline;
+    border-bottom: solid 1px #ccc;
 
 }
 
 .cart-item-image {
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
 }
 

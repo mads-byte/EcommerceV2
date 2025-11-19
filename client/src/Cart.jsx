@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import './Cart.css'
 import { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Cart() {
     const [cart, setCart] = useState(
@@ -25,7 +29,7 @@ function Cart() {
                         <div key={index} className="cart-item">
                             <img src={`products/${item.image}`} alt={item.product_name} className="cart-item-image" />
                             <div className="cart-item-details">
-                                <h3>{item.product_name}</h3>
+                                <h4>{item.product_name}</h4>
                                 <p className="item-price">Price: ${item.price * item.quantity}</p>
                                 <p className="item-quantity">
                                     <button
@@ -38,6 +42,7 @@ function Cart() {
                                             setCart(updatedCart);
                                             sessionStorage.setItem("cart", JSON.stringify(updatedCart));
                                         }}
+                                        className="btn btn-outline-secondary btn-sm mx-2"
                                     >
                                         -
                                     </button>
@@ -52,9 +57,25 @@ function Cart() {
                                             setCart(updatedCart);
                                             sessionStorage.setItem("cart", JSON.stringify(updatedCart));
                                         }}
+                                        className="btn btn-outline-secondary btn-sm mx-2"
                                     >
 
                                         +
+                                    </button>
+                                    <button
+                                        className="btn btn-outline-danger btn-sm mx-2"
+                                        onClick={() => {
+                                            const updatedCart = cart.filter((_, i) => i !== index);
+                                            setCart(updatedCart);
+                                            if (updatedCart.length === 0) {
+                                                sessionStorage.removeItem("cart");
+                                            } else {
+                                                sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+                                            }
+                                        }}
+                                        aria-label="Remove item from cart"
+                                    >
+                                        <FontAwesomeIcon icon={faTrash} />
                                     </button>
                                 </p>
                             </div>
@@ -85,6 +106,11 @@ function Cart() {
         ) : (
             <div className="cart-body">
                 <h2>Your Shopping Cart is Empty</h2>
+                <div>
+                    <NavLink to="/shop" aria-label="go to the shopping cart" className={({ isActive }) => (isActive ? "active" : "")}>
+                        Start Shopping!
+                    </NavLink>
+                </div>
             </div>
         )
     );
